@@ -34,15 +34,16 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a1020] text-white">
-      <header className="fixed left-0 right-0 top-0 z-40 mx-auto flex max-w-6xl items-center justify-between rounded-b-2xl border border-white/10 bg-[#0b1428]/60 px-5 py-3 backdrop-blur">
+    <div className="min-h-screen bg-[#060b19] text-white">
+      {/* Header */}
+      <header className="fixed left-0 right-0 top-0 z-40 mx-auto flex max-w-7xl items-center justify-between rounded-b-2xl border border-white/10 bg-[#0b1428]/60 px-5 py-3 backdrop-blur">
         <a href="#" className="font-semibold tracking-wide">
           <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Ved Patel</span>
         </a>
         <nav className="hidden gap-6 md:flex">
-          <a href="#about" className="text-sm text-cyan-100/80 hover:text-white">About</a>
-          <a href="#projects" className="text-sm text-cyan-100/80 hover:text-white">Projects</a>
-          <a href="#contact" className="text-sm text-cyan-100/80 hover:text-white">Contact</a>
+          <a href="#about" className="text-sm text-cyan-100/85 hover:text-white">About</a>
+          <a href="#projects" className="text-sm text-cyan-100/85 hover:text-white">Projects</a>
+          <a href="#contact" className="text-sm text-cyan-100/85 hover:text-white">Contact</a>
         </nav>
         <div className="flex items-center gap-3">
           <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub" className="rounded-lg border border-white/10 p-2 text-white/80 hover:text-white">
@@ -60,6 +61,7 @@ export default function App() {
         </div>
       </header>
 
+      {/* Main Sections */}
       <main>
         <Hero />
         <About />
@@ -67,7 +69,8 @@ export default function App() {
         <Contact />
       </main>
 
-      <footer className="border-t border-white/10 bg-[#081128] px-6 py-8 text-center text-cyan-100/80">
+      {/* Footer */}
+      <footer className="border-t border-white/10 bg-[#070d1c] px-6 py-8 text-center text-cyan-100/80">
         © 2025 Ved Patel | AI Agent Developer
       </footer>
     </div>

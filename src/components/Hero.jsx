@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import Spline from '@splinetool/react-spline';
 import { Play, Mail } from 'lucide-react';
 
@@ -14,35 +15,63 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] w-full overflow-hidden bg-[#0a1020] text-white">
+    <section className="relative min-h-[95vh] w-full overflow-hidden bg-[#070d1c] text-white">
+      {/* Spline cover background */}
       <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/4cHQr84zOGAHOehh/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+        <Spline
+          scene="https://prod.spline.design/LU2mWMPbF3Qi1Qxh/scene.splinecode"
+          style={{ width: '100%', height: '100%' }}
+        />
       </div>
 
-      {/* Subtle gradient glow overlay (non-blocking for interactions) */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#0a1020]/30 to-[#0a1020]" />
+      {/* Non-blocking overlays for depth and readability */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#070d1c]/20 via-[#070d1c]/40 to-[#070d1c]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#070d1c] to-transparent" />
 
-      <div className="relative mx-auto flex max-w-6xl flex-col items-center px-6 pt-28 pb-20 text-center">
-        <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-cyan-400/10 px-4 py-1 text-xs tracking-wider text-cyan-300 shadow-[0_0_30px_rgba(34,211,238,.35)]">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center px-6 pt-32 pb-24 text-center">
+        <motion.span
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-cyan-400/10 px-4 py-1 text-xs tracking-wider text-cyan-200 shadow-[0_0_30px_rgba(34,211,238,.35)] backdrop-blur"
+        >
           AI Agent Developer • Automation Expert
-        </span>
-        <h1 className="text-4xl font-semibold leading-tight md:text-6xl">
-          <span className="bg-gradient-to-r from-cyan-300 via-white to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(45,212,191,.35)]">
+        </motion.span>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="text-4xl font-semibold leading-tight md:text-6xl"
+        >
+          <span className="bg-gradient-to-r from-cyan-300 via-white to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_24px_rgba(45,212,191,.35)]">
             Building the Future with AI Agents
           </span>
-        </h1>
-        <p className="mt-5 max-w-3xl text-lg text-cyan-100/80 md:text-xl">
-          Hi, I’m <span className="font-semibold text-white">Ved Patel</span> — I create intelligent AI bots, automation systems, and smart web integrations.
-        </p>
+        </motion.h1>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-6 max-w-3xl text-lg text-cyan-100/85 md:text-xl"
+        >
+          Hi, I’m <span className="font-semibold text-white">Ved Patel</span> — I design autonomous agents, high-impact automations, and delightful AI experiences.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-9 flex flex-wrap items-center justify-center gap-4"
+        >
           <button
             onClick={openVideo}
             className="group relative inline-flex items-center gap-2 rounded-xl bg-cyan-400/20 px-6 py-3 text-cyan-200 backdrop-blur transition transform will-change-transform hover:-translate-y-0.5 hover:bg-cyan-400/30 hover:text-white hover:shadow-[0_10px_40px_-10px_rgba(34,211,238,.7)] active:translate-y-0"
           >
-            <span className="absolute inset-0 -z-0 rounded-xl bg-gradient-to-r from-cyan-400/0 via-cyan-400/20 to-cyan-400/0 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100" />
+            <span className="absolute inset-0 rounded-xl ring-1 ring-cyan-300/30" />
+            <span className="absolute inset-0 rounded-xl opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100 bg-gradient-to-r from-cyan-400/0 via-cyan-400/20 to-cyan-400/0" />
             <Play className="h-5 w-5" />
-            Watch My Work
+            Watch Reel
           </button>
 
           <button
@@ -53,7 +82,7 @@ export default function Hero() {
             <Mail className="h-5 w-5" />
             Contact Me
           </button>
-        </div>
+        </motion.div>
       </div>
 
       {showVideo && (

@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { Calendar, MessageCircle, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Contact() {
   const [name, setName] = useState('');
@@ -23,16 +24,23 @@ export default function Contact() {
   const waText = encodeURIComponent('Hi Ved, I want to book an appointment regarding AI projects.');
 
   return (
-    <section id="contact" className="relative w-full bg-[#071022] px-6 py-20 text-white">
-      <div className="mx-auto max-w-6xl">
+    <section id="contact" className="relative w-full bg-[#060c1a] px-6 py-20 text-white">
+      <div className="mx-auto max-w-7xl">
         <div className="mb-10 flex flex-col items-start gap-2">
           <span className="text-sm tracking-widest text-cyan-300">CONTACT</span>
           <h2 className="text-3xl font-semibold md:text-4xl">Let’s build something intelligent</h2>
-          <p className="max-w-2xl text-cyan-100/80">Have a project in mind? Drop a message or book a quick discovery call.</p>
+          <p className="max-w-2xl text-cyan-100/85">Have a project in mind? Drop a message or book a quick discovery call.</p>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <form onSubmit={submitForm} className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+          <motion.form
+            onSubmit={submitForm}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+          >
             <div>
               <label className="mb-1 block text-sm text-cyan-100/80">Name</label>
               <input
@@ -71,23 +79,35 @@ export default function Contact() {
             >
               <Send className="h-5 w-5" /> Send Message
             </button>
-          </form>
+          </motion.form>
 
           <div className="space-y-4">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+            >
               <h3 className="mb-2 text-xl font-semibold">Book Appointment</h3>
-              <p className="mb-4 text-sm text-cyan-100/80">Schedule a quick call to discuss your automation or AI needs.</p>
+              <p className="mb-4 text-sm text-cyan-100/85">Schedule a quick call to discuss your automation or AI needs.</p>
               <button
                 onClick={openBooking}
                 className="inline-flex items-center gap-2 rounded-xl bg-cyan-400/20 px-4 py-2 text-cyan-200 hover:bg-cyan-400/30 hover:text-white"
               >
                 <Calendar className="h-5 w-5" /> Open Calendar
               </button>
-            </div>
+            </motion.div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+            >
               <h3 className="mb-2 text-xl font-semibold">Message Me on WhatsApp</h3>
-              <p className="mb-4 text-sm text-cyan-100/80">I usually reply within a few hours.</p>
+              <p className="mb-4 text-sm text-cyan-100/85">I usually reply within a few hours.</p>
               <a
                 href={`https://wa.me/${whatsappNumber}?text=${waText}`}
                 target="_blank"
@@ -96,7 +116,7 @@ export default function Contact() {
               >
                 <MessageCircle className="h-5 w-5" /> Chat on WhatsApp
               </a>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { ExternalLink, Github } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const projects = [
   {
@@ -26,33 +27,38 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative w-full bg-[#0a1020] px-6 py-20 text-white">
-      <div className="mx-auto max-w-6xl">
+    <section id="projects" className="relative w-full bg-[#070d1c] px-6 py-20 text-white">
+      <div className="mx-auto max-w-7xl">
         <div className="mb-10 flex flex-col items-start gap-2">
           <span className="text-sm tracking-widest text-cyan-300">PROJECTS</span>
           <h2 className="text-3xl font-semibold md:text-4xl">Recent AI builds</h2>
-          <p className="max-w-2xl text-cyan-100/80">A glimpse into automation systems and AI agents I’ve delivered.</p>
+          <p className="max-w-2xl text-cyan-100/85">A glimpse into automation systems and AI agents I’ve delivered.</p>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p) => (
-            <article
+          {projects.map((p, idx) => (
+            <motion.article
               key={p.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
               className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur transition transform will-change-transform hover:-translate-y-1 hover:shadow-[0_25px_80px_-20px_rgba(59,130,246,.45)]"
+              style={{ perspective: 1000 }}
             >
-              <div className="relative h-44 w-full overflow-hidden">
+              <div className="relative h-48 w-full overflow-hidden">
                 <img
                   src={p.image}
                   alt={p.title}
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a1020] via-transparent to-transparent opacity-70" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#070d1c] via-transparent to-transparent opacity-70" />
               </div>
 
               <div className="space-y-3 p-5">
                 <h3 className="text-xl font-semibold">{p.title}</h3>
-                <p className="text-sm text-cyan-100/80">{p.desc}</p>
+                <p className="text-sm text-cyan-100/85">{p.desc}</p>
                 <div className="mt-4 flex items-center gap-3">
                   <a
                     href={p.demo}
@@ -72,7 +78,10 @@ export default function Projects() {
                   </a>
                 </div>
               </div>
-            </article>
+
+              {/* Glow */}
+              <div className="pointer-events-none absolute -inset-px opacity-0 blur-2xl transition duration-500 group-hover:opacity-100" style={{ background: 'radial-gradient(600px circle at 0 0, rgba(34,211,238,.15), transparent 40%)' }} />
+            </motion.article>
           ))}
         </div>
       </div>

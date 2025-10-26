@@ -11,17 +11,23 @@ const skills = [
 
 export default function About() {
   return (
-    <section id="about" className="relative w-full bg-[#0a1020] px-6 py-20 text-white">
+    <section id="about" className="relative w-full bg-[#070d1c] px-6 py-20 text-white">
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.08),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(59,130,246,0.08),transparent_35%)]" />
 
-      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 md:grid-cols-2">
-        <div className="flex flex-col gap-4">
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 md:grid-cols-2">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col gap-4"
+        >
           <div className="inline-flex items-center gap-2 text-cyan-300">
             <Sparkles className="h-5 w-5" />
             <span className="text-sm tracking-widest">ABOUT ME</span>
           </div>
           <h2 className="text-3xl font-semibold md:text-4xl">Designing intelligent automations that scale</h2>
-          <p className="text-cyan-100/80">
+          <p className="text-cyan-100/85">
             I specialize in building autonomous AI agents, workflow automations, and smart integrations that turn business logic into real results. From idea to deployment, I design systems that are robust, efficient, and delightful to use.
           </p>
 
@@ -36,11 +42,11 @@ export default function About() {
               <div className="text-sm">AI Agent Developer • Automation Expert</div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="space-y-4">
+        <div className="space-y-5">
           {skills.map((s, i) => (
-            <div key={s.name} className="">
+            <div key={s.name}>
               <div className="mb-2 flex items-center justify-between text-sm text-cyan-100/80">
                 <span>{s.name}</span>
                 <span>{s.level}%</span>
